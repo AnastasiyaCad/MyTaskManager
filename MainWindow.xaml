@@ -13,8 +13,31 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="10" Orientation="Horizontal">
-            <TextBox x:Name="titleLable" Width="200" Margin="5" Text="Новая задача"/>
-            <Button Content="Добавить" Margin="5" Padding="10,5"/>
+            <TextBox x:Name="txtTitle" Width="200" Margin="5" Text="Новая задача"/>
+            <Button Content="Добавить" Margin="5" Padding="10,5" Click="AddTask_Click"/>
+            <Button Content="Удалить выбранные" Margin="5" Padding="10,5" Click="DeleteSelected_Click"/>
         </StackPanel>
+
+        <ListView Grid.Row="1" Margin="10" x:Name="taskListView">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="30">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsCompleted}"
+                                          Checked="CheckBox_Checked"
+                                          Unchecked="CheckBox_Unchecked"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Задача" Width="200"
+                                    DisplayMemberBinding="{Binding Title}"/>
+                    <GridViewColumn Header="Дата создания" Width="100"
+                                    DisplayMemberBinding="{Binding CreatedDate, StringFormat=dd.mm.yyyy}"/>
+                    <GridViewColumn Header="Приоритет" Width="80"
+                                    DisplayMemberBinding="{Binding Priority}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

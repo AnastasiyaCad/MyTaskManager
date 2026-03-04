@@ -4,5 +4,6 @@ obj/
 [Rr]elease*/
 [Tt]est[Rr]esult*
 .vs/
+.idea/
 #Nuget packages folder
 packages/

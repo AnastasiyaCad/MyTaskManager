@@ -34,7 +34,7 @@ public class TaskService
 
     public void DeleteTask(int id)
     {
-        var task = _context.Tasks.Find();
+        var task = _context.Tasks.Find(id);
         if (task != null)
         {
             _context.Tasks.Remove(task);
